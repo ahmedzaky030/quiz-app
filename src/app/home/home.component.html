@@ -1,0 +1,52 @@
+
+<div class="container ">
+  <div class="row">
+  <div class=" sidebar">
+    Sidebar
+    <br/>
+    <br/>
+
+    <button id="schools" >Schools</button>
+    <div class="dropdown-content">
+      <ul *ngFor="let school of schools">
+        <li (click)="GetDepartment(school.Id)">{{school.name}}</li>
+      </ul>
+    </div>
+    <br/>
+    <br/>
+
+    <span>A list of Departments</span>
+    <ul *ngFor="let department of departments">
+      <li (click)="GetQuizzes(department.Id)">{{department.name}}</li>
+    </ul>
+    <br/>
+    <br/>
+
+  </div>
+  <div class="maincontent">
+    <div *ngIf="quizzes != null" class="content">
+      <ul *ngFor="let quiz of quizzes">
+        <li (click)="SelectQuiz(quiz.Id)">{{quiz.name}}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="quizzesTypes != null">
+      <div *ngFor=" let type of quizzesTypes">
+        <div *ngIf= " type=='text' || type=='checkbox' || type=='number' ">
+          <input [type]="type"  />
+        </div>
+        <div *ngIf="type=='select' ">
+            <select >
+              <option><input type="text" /></option>
+            </select>
+        </div>
+        <div *ngIf="type=='dependent' || type =='dependentUpon' ">
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  </div>
+</div>

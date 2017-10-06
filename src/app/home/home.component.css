@@ -1,0 +1,42 @@
+.sidebar{
+  padding: 40px 0px 0px 50px;
+  background-color: royalblue;
+  width: 15%;
+  height: 500 ;
+  float: left;
+
+}
+
+.sidebar button{
+
+  background-color: green;
+  block-size: 50px;
+  border-width: 0 ;
+}
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: green;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.sidebar:hover .dropdown-content {
+  display: block;
+}
+
+.maincontent{
+  background-color: lightgray;
+  width:85%;
+  height: 500;
+
+}
+
+.maincontent .content{
+  background-color: blueviolet;
+  width: 50%;
+  margin-left: 20px;
+
+
+}
