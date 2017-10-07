@@ -1,67 +1,128 @@
-
-<div class="container ">
-  <div class="row">
-  <div class=" sidebar">
-    Sidebar
-    <br/>
-    <br/>
-
-    <button id="schools" >Schools</button>
-    <div class="dropdown-content">
-      <ul *ngFor="let school of schools | async">
-        <li (click)="GetDepartment(school.Id)">{{school.name}}</li>
-      </ul>
+<div class="sidebar">
+  <div class="dropdown dropdownDiv">
+    <button class="dropbtn">Schools</button>
+    <div  class="dropdown-content">
+      <a *ngFor="let school of schools | async" (click)="GetDepartment(school.Id)" href="#">{{school.name}}</a>
     </div>
-    <br/>
-    <br/>
-
-    <span>A list of Departments</span>
-    <ul *ngFor="let department of departments | async">
-      <li (click)="GetQuizzes(department.Id)">{{department.name}}</li>
-    </ul>
-    <br/>
-    <br/>
-
   </div>
-  <div class="maincontent">
-    <div *ngIf="quizzes != null" class="content">
-      <ul *ngFor="let quiz of quizzes | async">
-        <li (click)="SelectQuiz(quiz.Id)">{{quiz.name}}</li>
+  <div *ngIf="departments != null" class="listDiv list">
+    <div >
+      <h4>List Of Departments</h4>
+      <ul>
+        <li *ngFor="let department of departments | async" (click)="GetQuizzes(department.Id)"><a href="#">{{department.name}}</a></li>
       </ul>
     </div>
-
-    <div>
-      <form (submit)="submit(quizForm)" [formGroup]="quizForm">
-
-      <div *ngIf="quizzesTypes != null">
+  </div>
+</div>
+<div *ngIf="quizzes != null"  class="content">
+  <div  class="">
+      <ul class="list-group quiz">
+          <li *ngFor="let quiz of quizzes | async" class="list-group-item" (click)="SelectQuiz(quiz.Id)">{{quiz.name}}</li>
+      </ul>
+  </div>
+  <div class="space"></div>
+  <div class="form">
+      <form (submit)="submit(quizForm)" [formGroup]="quizForm" *ngIf="quizzesTypes != null">
         <div *ngFor="let type of quizzesTypes ; let i = index">
-          <div *ngIf=" type=='text' ||  type=='number' ">
-            <label>{{ type}} :
-          <input  [type]="type" [formControl]='type+i' />
+        <div class="form-group" >
+          <div *ngIf="type=='text' || type=='number'">
+            <label [for]="type+i">{{type + i}}</label>
+            <input [type]="type" class="form-control" [formControlName]='type+i' [id]="type+i">
+          </div>
+        </div>
+         <div class="form-group" *ngIf="type=='select'">
+          <label [for]="type+i">Please Select any value</label>
+
+            <select [id]="type+i" [formControlName]='type+i'>
+            <option>option 1</option>
+            <option>option 2</option>
+            <option>option 3</option>
+            <option>option 4</option>
+          </select>
+          </div>
+        <div class="form-check" *ngIf="type=='checkbox'">
+          <label class="form-check-label">
+            <input type="checkbox" [formControlName]='type+i' class="form-check-input">
+            Check me out
+          </label>
+        </div>
+        <div class="" *ngIf="type=='dependent' || type=='dependentUpon'">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="nav sidebar">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose Schools
+        </button>
+        <div *ngFor="let school of schools | async" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a (click)="GetDepartment(school.Id)" class="dropdown-item" >{{school.name}}</a>
+        </div>
+      </div>
+
+      <br/>
+      <br/>
+
+      <span>A list of Departments</span>
+      <ul *ngFor="let department of departments | async">
+        <li (click)="GetQuizzes(department.Id)">{{department.name}}</li>
+      </ul>
+      <br/>
+      <br/>
+
+    </div>
+    <div class="maincontent">
+      <div *ngIf="quizzes != null" class="content">
+        <ul *ngFor="let quiz of quizzes | async">
+          <li (click)="SelectQuiz(quiz.Id)">{{quiz.name}}</li>
+        </ul>
+      </div>
+
+      <div>
+        <form (submit)="submit(quizForm)" [formGroup]="quizForm">
+
+          <div *ngIf="quizzesTypes != null">
+            <div *ngFor="let type of quizzesTypes ; let i = index">
+              <div *ngIf=" type=='text' ||  type=='number' ">
+                <label>{{ type}} :
+          <input  class="form-control" [type]="type" [formControl]='type+i' />
         </label>
-          </div>
-          <div *ngIf=" type=='checkbox'">
-            <input [type]="type" [formControl]='type+i' name="checkbox" [checked]='true' />
-          </div>
-          <div *ngIf="type=='select'">
-            <select  [formControlName]='type+i'>
+              </div>
+              <div *ngIf=" type=='checkbox'">
+                <input [type]="type" [formControl]='type+i' name="checkbox" [checked]='true' />
+              </div>
+              <div *ngIf="type=='select'">
+                <select [formControlName]='type+i'>
               <option>option 1</option>
               <option>option 2</option>
               <option>option 3</option>
               <option>option 4</option>
             </select>
+              </div>
+              <div *ngIf="type=='dependent' || type =='dependentUpon' ">
+              </div>
+            </div>
+            <input type="submit" value="Submit" />
           </div>
-          <div *ngIf="type=='dependent' || type =='dependentUpon' ">
-          </div>
-        </div>
+        </form>
       </div>
-      <input type="submit" value="Submit" />
-    </form>
-{{ s|async}}
-
+    </div>
   </div>
-
-  </div>
-  </div>
-</div>
-<input type="checkbox" checked='checked' name="sds"/>
+</div> -->

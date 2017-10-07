@@ -10,7 +10,6 @@ import 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   schools:Observable<any[]>;
   departments: Observable<any[]>;
   quizzes:Observable<any[]>;
@@ -22,25 +21,20 @@ export class HomeComponent implements OnInit {
 
   constructor(private schoolService : SchoolService,
     private fakeService : FakeBackendService,
-  private formBuilder : FormBuilder) {
+      private formBuilder : FormBuilder) {
     this.quizForm = new FormGroup({});
-
-
    }
 
   ngOnInit() {
-    this.schools = this.schoolService.getSchools();
+    this.schools = this.schoolService.GetSchools();
   }
 
   GetDepartment(id: number){
-    console.log('clicked');
-     this.departments = this.schoolService.getDepartmentsBySchool(id);
+     this.departments = this.schoolService.GetDepartmentsBySchool(id);
   }
 
   GetQuizzes(id: number) {
-    this.quizzes = this.schoolService.getQuizzesByDepartment(id);
-
-
+    this.quizzes = this.schoolService.GetQuizzesByDepartment(id);
   }
 
   SelectQuiz(id: number){
@@ -49,7 +43,6 @@ export class HomeComponent implements OnInit {
   }
 
   submit(form : FormGroup){
-
     console.log('The form');
     console.info(form.controls);
   }
@@ -62,19 +55,12 @@ export class HomeComponent implements OnInit {
 
     this.quizForm.controls = {};
 
-    if(this.quizzesTypes != null){
-      console.log('Generate form');
-      console.log(this.quizzesTypes);
-    for (const index in this.quizzesTypes){
+    if(this.quizzesTypes != null) {
+      for (let index in this.quizzesTypes){
       let name:string = this.quizzesTypes[index];
       name = name + index;
-      const contro : FormControl = new FormControl();
-     if(name.startsWith('checkbox')) {
-       console.log('inside if startwith');
-       contro.patchValue(false);
-     }
-
-      this.quizForm.addControl(name,contro);
+      let control : FormControl = new FormControl();
+      this.quizForm.addControl(name,control);
    }
   }
 

@@ -1,42 +1,188 @@
-.sidebar{
-  padding: 40px 0px 0px 50px;
-  background-color: royalblue;
-  width: 15%;
-  height: 500 ;
+.sidebar {
+  width: 20%;
+  height: 600px;
   float: left;
-
+  background-color: deepskyblue;
 }
 
-.sidebar button{
-
-  background-color: green;
-  block-size: 50px;
-  border-width: 0 ;
+.sidebar .dropdownDiv {
+  margin: 50px 0px 0px 65px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
 }
-.dropdown-content{
+
+.sidebar .listDiv {
+  width: 200px;
+  height: 50px;
+  margin: 100px 0 0 40px;
+}
+
+.content {
+  height: 600px;
+  background-color: cornflowerblue;
+}
+
+.content .quiz {
+  width: 500px;
+  height: 50px;
+  float: right;
+  margin: 50px 526px 0px 30px;
+  font-size: 16px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 3px 2px 3px #333333;
+  background-color: #8AD9FF;
+      border-radius: 8px;
+}
+.content  .form{
+  width: 500px;
+  height: 50px;
+  float: right;
+  margin: 0px 20px 0px 30px;
+  font-size: 16px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 3px 2px 3px #333333;
+  background-color: #8AD9FF;
+      border-radius: 8px;
+
+}
+.space{
+  width:400px;
+  height:200px;
+  position: relative;
+}
+/*-----------------external css---------------*/
+
+.quiz ul {
+  height: auto;
+  padding: 8px 0px;
+  margin: 0px;
+}
+#menu li {
+display: inline;
+padding: 20px;
+}
+#menu a {
+  text-decoration: none;
+  color: #00F;
+  padding: 8px 8px 8px 8px;
+}
+#menu a:hover {
+  color: #F90;
+  background-color: #FFF;
+}
+
+/*----------------------------external css-----------------*/
+
+.dropbtn {
+  background-color: cornflowerblue/*#4CAF50*/
+  ;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
   display: none;
   position: absolute;
-  background-color: green;
+  background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-.sidebar:hover .dropdown-content {
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
   display: block;
 }
 
-.maincontent{
-  background-color: lightgray;
-  width:85%;
-  height: 500;
 
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1
 }
 
-.maincontent .content{
-  background-color: blueviolet;
-  width: 50%;
-  margin-left: 20px;
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
 
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+
+/*-----------------------*/
+
+.list {
+  width: 200px;
+  background-color: cornflowerblue;
+}
+
+h2 {
+  font: 400 40px/1.5 Helvetica, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border: none;
+}
+
+li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 200px;
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+.list-group-item{
+  background-color: burlywood;
+}
+li a:hover {
+  font-size: 30px;
+  background: #f6f6f6;
 }
