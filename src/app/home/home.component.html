@@ -8,7 +8,7 @@
 
     <button id="schools" >Schools</button>
     <div class="dropdown-content">
-      <ul *ngFor="let school of schools">
+      <ul *ngFor="let school of schools | async">
         <li (click)="GetDepartment(school.Id)">{{school.name}}</li>
       </ul>
     </div>
@@ -16,7 +16,7 @@
     <br/>
 
     <span>A list of Departments</span>
-    <ul *ngFor="let department of departments">
+    <ul *ngFor="let department of departments | async">
       <li (click)="GetQuizzes(department.Id)">{{department.name}}</li>
     </ul>
     <br/>
@@ -25,28 +25,43 @@
   </div>
   <div class="maincontent">
     <div *ngIf="quizzes != null" class="content">
-      <ul *ngFor="let quiz of quizzes">
+      <ul *ngFor="let quiz of quizzes | async">
         <li (click)="SelectQuiz(quiz.Id)">{{quiz.name}}</li>
       </ul>
     </div>
 
-    <div *ngIf="quizzesTypes != null">
-      <div *ngFor=" let type of quizzesTypes">
-        <div *ngIf= " type=='text' || type=='checkbox' || type=='number' ">
-          <input [type]="type"  />
-        </div>
-        <div *ngIf="type=='select' ">
-            <select >
-              <option><input type="text" /></option>
-            </select>
-        </div>
-        <div *ngIf="type=='dependent' || type =='dependentUpon' ">
+    <div>
+      <form (submit)="submit(quizForm)" [formGroup]="quizForm">
 
+      <div *ngIf="quizzesTypes != null">
+        <div *ngFor="let type of quizzesTypes ; let i = index">
+          <div *ngIf=" type=='text' ||  type=='number' ">
+            <label>{{ type}} :
+          <input  [type]="type" [formControl]='type+i' />
+        </label>
+          </div>
+          <div *ngIf=" type=='checkbox'">
+            <input [type]="type" [formControl]='type+i' name="checkbox" [checked]='true' />
+          </div>
+          <div *ngIf="type=='select'">
+            <select  [formControlName]='type+i'>
+              <option>option 1</option>
+              <option>option 2</option>
+              <option>option 3</option>
+              <option>option 4</option>
+            </select>
+          </div>
+          <div *ngIf="type=='dependent' || type =='dependentUpon' ">
+          </div>
         </div>
       </div>
-    </div>
+      <input type="submit" value="Submit" />
+    </form>
+{{ s|async}}
 
+  </div>
 
   </div>
   </div>
 </div>
+<input type="checkbox" checked='checked' name="sds"/>
