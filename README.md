@@ -3,11 +3,12 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
 
 ## Usage
-To be able to run this app please follow the instruction:
-```git clone https://github.com/ahmedzaky030/quiz-app.git
-cd quiz-app
-npm install
-ng serve```
+To be able to run this app please follow the instruction:<br/>
+`git clone https://github.com/ahmedzaky030/quiz-app.git `
+`cd quiz-app `
+`npm install `
+`ng serve `
+
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
