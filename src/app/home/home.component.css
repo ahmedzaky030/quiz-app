@@ -180,7 +180,7 @@ li a {
   transition: font-size 0.3s ease, background-color 0.3s ease;
 }
 .list-group-item{
-  background-color: burlywood;
+  background-color: #87dade;
 }
 li a:hover {
   font-size: 30px;

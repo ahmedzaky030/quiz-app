@@ -44,25 +44,34 @@ export class HomeComponent implements OnInit {
 
   submit(form : FormGroup){
     console.log('The form');
-    console.info(form.controls);
+    var formArray = [];
+    for( let control in form.controls){
+      let object = {"name":control , "value":form.controls[control].value };
+      formArray.push(object);
+    }
+    console.info(formArray);
   }
 
-  change(el:HTMLElement){
-   console.log(  el.nodeValue);
-  }
-
-  GenerateFormGroup(){
-
+  GenerateFormGroup() {
     this.quizForm.controls = {};
 
-    if(this.quizzesTypes != null) {
-      for (let index in this.quizzesTypes){
-      let name:string = this.quizzesTypes[index];
-      name = name + index;
-      let control : FormControl = new FormControl();
-      this.quizForm.addControl(name,control);
-   }
+    if (this.quizzesTypes != null) {
+      for (let index in this.quizzesTypes) {
+        let name: string = this.quizzesTypes[index];
+        name = name + index;
+        let control: FormControl = new FormControl();
+        this.quizForm.addControl(name, control);
+      }
+    }
   }
 
+  CheckDependentUpon(type:string , index:number ){
+    var elementName = 'dependentUpon'+index;
+    var hasValue = this.quizForm.get(elementName).value != null;
+    if(hasValue) {
+      index++;
+      elementName = 'dependent' + index;
+      this.quizForm.get(elementName).enable();
+    }
   }
 }
