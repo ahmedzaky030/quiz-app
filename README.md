@@ -4,10 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Usage
 To be able to run this app please follow the instruction:<br/>
-`git clone https://github.com/ahmedzaky030/quiz-app.git `
-`cd quiz-app `
-`npm install `
-`ng serve `
+`git clone https://github.com/ahmedzaky030/quiz-app.git `<br/>
+`cd quiz-app `<br/>
+`npm install `<br/>
+`ng serve `<br/>
 
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
